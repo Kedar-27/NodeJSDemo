@@ -1,6 +1,3 @@
-const add = require('./utils.js')
+const  notes = require('./notes.js')
 
-const sum = add(12 , 1)
-
-
-console.log(sum)
+console.log(notes())
