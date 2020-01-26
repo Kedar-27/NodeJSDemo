@@ -13,6 +13,8 @@ const addNote = function (title, body) {
     const duplicateNotes = notes.filter(function(note) {
         return note.title === title
     })
+
+
     if (duplicateNotes.length === 0){
         notes.push({
             title: title,
@@ -23,10 +25,26 @@ const addNote = function (title, body) {
     }else{
         console.log(chalk.red('Note title already taken!'))
     }
-
-
-   
 }
+
+// for removing note from .json file
+const removeNote = function (title) {
+    const notes = loadNotes()
+    let notesToKeep = notes.filter(function (note) {
+        return note.title !== title
+    })
+
+    if (notesToKeep.length < notes){
+        console.log(chalk.green(`Note with title "${title}" deleted succesfully`))
+        saveNotes(notesToKeep)
+    }else{
+        console.log(chalk.red(`Note with title "${title}" note found`))
+    
+    } 
+}
+
+
+
 
 /// for loading notes from .json file
 const loadNotes = function () {
@@ -41,6 +59,7 @@ const loadNotes = function () {
 }
 
 
+
 /// for saving data to .json file
 const saveNotes = function(notes) {
     const notesJSON = JSON.stringify(notes)
@@ -50,7 +69,10 @@ const saveNotes = function(notes) {
 
 
 
+
+
 module.exports = {
     getNotes: getNotes,
-    addNote: addNote
+    addNote: addNote,
+    removeNote: removeNote
 }
