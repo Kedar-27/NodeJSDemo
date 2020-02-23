@@ -37,15 +37,19 @@ const utils = require('./utils.js')
 // })
 
 
+let address = process.argv[2]
 
-utils.geocode(process.argv[2], (error, data) =>{
+
+utils.geocode(address, (error, {
+            latitude,
+            longitude
+        }) => {
     if (error){
     return console.log(error)
-}
-    console.log(error)
-    console.log(data)
-    utils.forecast(data.latitude, data.longitude,(error,forcastData) =>{
-        console.log(data)
-        console.log(forcastData)
+    }
+  //  console.log(data)
+    utils.forecast(latitude, longitude, (error,forcastData) =>{
+       // console.log(data)
+        //console.log(forcastData)
     })
 })
