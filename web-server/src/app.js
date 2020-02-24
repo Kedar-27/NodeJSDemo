@@ -28,16 +28,50 @@ app.set('view engine', 'hbs');
 // })
 
 
-const publicDirectoryPath = path.join(__dirname,'../public')
+const publicDirectoryPath = path.join(__dirname, '../public')
 
 
-app.use(express.static(publicDirectoryPath))
+//app.use(express.static(publicDirectoryPath))
 //app.use(express.static('/help',publicDirectoryPath))
+
+
+app.get('', (request, response) => {
+
+    response.render('index', {
+        title: 'Weather App',
+        name: 'Ked27'
+    })
+
+
+})
+
+app.get('/help', (request, response) => {
+
+    response.render('help', {
+        title: 'Happ to help',
+        message: 'Feel free to reach.'
+    })
+
+})
+
+
+app.get('/about', (request, response) => {
+
+    response.render('about', {
+        title: 'Weather App',
+        name: 'Ked27'
+    })
+
+})
+
 
 
 app.get('/weather', (request, response) => {
 
-    response.send({location: 'India', forecast: '50 degress'})
+    response.send({
+        location: 'India',
+        forecast: '50 degress'
+    })
 })
 
 
