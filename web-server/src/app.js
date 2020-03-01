@@ -25,7 +25,7 @@ let app = express()
 //     response.send('<h2>About </>')
 // })
 
-
+// Define path for express server
 const publicDirectoryPath = path.join(__dirname, '../public')
 const viewsDirectoryPath = path.join(__dirname, '../templates/views')
 const partialsDirectoryPath = path.join(__dirname, '../templates/partials')
@@ -82,6 +82,27 @@ app.get('/weather', (request, response) => {
         forecast: '50 degress'
     })
 })
+
+app.get('/help/*', (request, response) => {
+
+    response.render('error', {
+       title: 'Help page not found.',
+        name: 'Ked27'
+    })
+})
+
+
+
+app.get('*', (request, response) => {
+
+    response.render('error', {
+        title: 'Error 404 Page Not found.',
+        name: 'Ked27'
+    })
+})
+
+
+
 
 
 app.listen(3000, () => {
