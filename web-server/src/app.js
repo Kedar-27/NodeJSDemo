@@ -1,11 +1,9 @@
 const path = require('path')
 const express = require('express')
+const hbs = require('hbs')
+
 
 let app = express()
-
-
-app.set('view engine', 'hbs');
-
 
 // Removed static route handler
 
@@ -29,6 +27,16 @@ app.set('view engine', 'hbs');
 
 
 const publicDirectoryPath = path.join(__dirname, '../public')
+const viewsDirectoryPath = path.join(__dirname, '../templates/views')
+const partialsDirectoryPath = path.join(__dirname, '../templates/partials')
+app.set('view engine', 'hbs');
+
+//Setup Static directory to serve
+app.use(express.static(publicDirectoryPath))
+// Setup views directory for handlebars
+app.set('views', viewsDirectoryPath);
+
+hbs.registerPartials(partialsDirectoryPath)
 
 
 //app.use(express.static(publicDirectoryPath))
@@ -48,8 +56,9 @@ app.get('', (request, response) => {
 app.get('/help', (request, response) => {
 
     response.render('help', {
-        title: 'Happ to help',
-        message: 'Feel free to reach.'
+        title: 'Happy to help',
+        message: 'Feel free to reach.',
+         name: 'Ked27'
     })
 
 })
