@@ -6,6 +6,7 @@
     <title>{{title}}</title>
 
     <head>
+        <link rel="icon" href="/img/weather.png">
         <link rel="stylesheet" href="/css/styles.css">
         <script src="/js/app.js"></script>
 
@@ -13,8 +14,14 @@
 
 
 <body>
-    {{> header}}
-    <img src="/img/manchester-united.png">
+
+    <div class="main-content">
+        {{> header}}
+        <img class="portrait" src="/img/manchester-united.png">
+    </div>
+
+
+    
     {{> footer}}
 </body>
 
