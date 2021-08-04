@@ -6,22 +6,22 @@ const rootDir = require('../util/path');
 
 const router = express.Router();
 
-const products = [];
+const users = [];
 
 // /admin/add-product => GET
-router.get('/add-product', (req, res, next) => {
-  res.render('add-product', {pageTitle: "Add Product", path: '/admin/add-product', activeAddProduct: true,
+router.get('/users', (req, res, next) => {
+  res.render('add-user', {pageTitle: "Add User", path: '/users', activeAddProduct: true,
   productCSS: false,
   formsCSS: true,
 });
 });
 
 // /admin/add-product => POST
-router.post('/add-product', (req, res, next) => {
+router.post('/add-user', (req, res, next) => {
   console.log(req.body);
-  products.push({ title : req.body.title});
+  users.push({ title : req.body.title});
   res.redirect('/'); 
 });
 
 exports.router = router;
-exports.products = products;
+exports.users = users;
